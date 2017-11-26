@@ -47,7 +47,7 @@ router.post('/postData', function(req, res, next){
   //res.redirect('/');
 });
 
-router.put('/putData', function(req, res, next) {
+router.post('/putData', function(req, res, next) {
   var item = {
     player: req.body.player,
     main: req.body.main,
@@ -65,7 +65,7 @@ router.put('/putData', function(req, res, next) {
   });
 });
 
-router.delete('/deleteData', function(req, res, next) {
+router.post('/deleteData', function(req, res, next) {
   var id = req.body.id;
 
   MongoClient.connect(uriTestDb, function(err, db){
