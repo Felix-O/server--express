@@ -66,7 +66,16 @@ router.put('/putData', function(req, res, next) {
 });
 
 router.delete('/deleteData', function(req, res, next) {
+  var id = req.body.id;
 
+  MongoClient.connect(uriTestDb, function(err, db){
+    assert.equal(null, err);
+    db.collection('bbrr').deleteOne({"_id": objectId(id)}, function(err, result){
+      assert.equal(null, err);
+      console.log('Item deleted');
+      db.close();
+    });
+  });
 });
 
 module.exports = router;
