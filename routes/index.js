@@ -47,7 +47,7 @@ router.post('/postData', function(req, res, next){
   //res.redirect('/');
 });
 
-router.post('/putData', function(req, res, next) {
+router.put('/putData', function(req, res, next) {
   var item = {
     player: req.body.player,
     main: req.body.main,
