@@ -40,7 +40,7 @@ router.post('/postData', function(req, res, next){
     assert.equal(null, err);
     db.collection('bbrr').insertOne(item, function(err, result){
       assert.equal(null, err);
-      console.log('Item recieved');
+      res.json('Item recieved');
       db.close();
     });
   });
@@ -59,7 +59,7 @@ router.put('/putData', function(req, res, next) {
     assert.equal(null, err);
     db.collection('bbrr').updateOne({"_id": objectId(id)}, {$set: item}, function(err, result){
       assert.equal(null, err);
-      console.log('Item updated');
+      res.json('Item updated');
       db.close();
     });
   });
@@ -72,7 +72,7 @@ router.post('/deleteData', function(req, res, next) {
     assert.equal(null, err);
     db.collection('bbrr').deleteOne({"_id": objectId(id)}, function(err, result){
       assert.equal(null, err);
-      console.log('Item deleted');
+      res.json('Item deleted');
       db.close();
     });
   });
