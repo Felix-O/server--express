@@ -4,7 +4,7 @@ var MongoClient = require('mongodb').MongoClient;
 var objectId = require('mongodb').ObjectID;
 var assert = require('assert');
 
-var uriTestDb = "mongodb://foje:F0j3500.@cluster0-shard-00-00-3xrpm.mongodb.net:27017,cluster0-shard-00-01-3xrpm.mongodb.net:27017,cluster0-shard-00-02-3xrpm.mongodb.net:27017/data_db?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin";
+var uriTestDb = "mongodb://Felix-O:bustmup.@cluster0-shard-00-00-3xrpm.mongodb.net:27017,cluster0-shard-00-01-3xrpm.mongodb.net:27017,cluster0-shard-00-02-3xrpm.mongodb.net:27017/data_db?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin";
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
