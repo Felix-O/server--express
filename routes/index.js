@@ -40,7 +40,7 @@ router.post('/postData', function(req, res, next){
     assert.equal(null, err);
     db.collection('bbrr').insertOne(item, function(err, result){
       assert.equal(null, err);
-      res.json('Item recieved');
+      res.json('Data recieved');
       db.close();
     });
   });
