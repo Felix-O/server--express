@@ -22,6 +22,14 @@ function setUserInfo(request){
 
 
 
+exports.test = function(req, res, next){
+  res.json({
+    message: 'hello';
+  });
+}
+
+
+
 exports.login = function(req, res, next){
 
     var userInfo = setUserInfo(req.user);
