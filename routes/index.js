@@ -10,25 +10,23 @@ var passport = require('passport');
 var requireAuth = passport.authenticate('jwt', {session: false}),
   requireLogin = passport.authenticate('local', {session: false});
 
-
-router.get('/test', AuthenticationController.test);
-
-  router.post('/register', AuthenticationController.register);
-  router.post('/login', requireLogin, AuthenticationController.login);
-
-  router.get('/protected', requireAuth, function(req, res){
-      res.send({ content: 'Success'});
-  });
-
-
-
-
 var uriTestDb = "mongodb://Felix-O:bustmup@cluster0-shard-00-00-3xrpm.mongodb.net:27017,cluster0-shard-00-01-3xrpm.mongodb.net:27017,cluster0-shard-00-02-3xrpm.mongodb.net:27017/data_db?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin";
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'API Server' });
 });
+
+router.get('/test', AuthenticationController.test);
+
+/**
+  router.post('/register', AuthenticationController.register);
+  router.post('/login', requireLogin, AuthenticationController.login);
+
+  router.get('/protected', requireAuth, function(req, res){
+      res.send({ content: 'Success'});
+  });
+/**/
 
 router.get('/getData', function(req, res, next) {
   MongoClient.connect(uriTestDb, function(err, db) {
