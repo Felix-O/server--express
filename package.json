@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node server.js"
+    "start": "node ./bin/www"
   },
   "dependencies": {
     "assert": "1.4.1",
@@ -24,4 +24,3 @@
     "passport-local": "^1.0.0"
   }
 }
-"start": "node ./bin/www"
