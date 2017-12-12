@@ -15,7 +15,10 @@ var users = require('./routes/users');
 
 var app = express();
 
-      mongoose.connect(databaseConfig.url);
+      mongoose.connect(databaseConfig.url, {
+        useMongoClient: true,
+        /* other options */
+      });
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

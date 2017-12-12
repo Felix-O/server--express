@@ -5,9 +5,13 @@ var JwtStrategy = require('passport-jwt').Strategy;
 var ExtractJwt = require('passport-jwt').ExtractJwt;
 var LocalStrategy = require('passport-local').Strategy;
 
+
+
 var localOptions = {
     usernameField: 'email'
 };
+
+
 
 var localLogin = new LocalStrategy(localOptions, function(email, password, done){
 
@@ -34,17 +38,18 @@ var localLogin = new LocalStrategy(localOptions, function(email, password, done)
             }
 
             return done(null, user);
-
         });
-
     });
-
 });
+
+
 
 var jwtOptions = {
     jwtFromRequest: ExtractJwt.fromAuthHeader(),
     secretOrKey: config.secret
 };
+
+
 
 var jwtLogin = new JwtStrategy(jwtOptions, function(payload, done){
 
@@ -59,9 +64,7 @@ var jwtLogin = new JwtStrategy(jwtOptions, function(payload, done){
         } else {
             done(null, false);
         }
-
     });
-
 });
 
 passport.use(jwtLogin);
