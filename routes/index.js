@@ -17,7 +17,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'API Server' });
 });
 
-//router.get('/test', AuthenticationController.test);
+router.get('/test', AuthenticationController.test);
 
 /**
   router.post('/register', AuthenticationController.register);
