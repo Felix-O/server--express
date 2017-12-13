@@ -23,10 +23,10 @@ router.get('/test2', passportService.test2);
 /**/
 
 /**/
-  router.post('/register', AuthenticationController.register);
-  router.post('/login', requireLogin, AuthenticationController.login);
+  router.post('/api/auth/register', AuthenticationController.register);
+  router.post('/api/auth/login', requireLogin, AuthenticationController.login);
 
-  router.get('/protected', requireAuth, function(req, res){
+  router.get('/api/auth/protected', requireAuth, function(req, res){
       res.send({ content: 'Success'});
   });
 /**/
