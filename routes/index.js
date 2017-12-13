@@ -19,7 +19,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/test', AuthenticationController.test);
 
-/**
+/**/
   router.post('/register', AuthenticationController.register);
   router.post('/login', requireLogin, AuthenticationController.login);
 
