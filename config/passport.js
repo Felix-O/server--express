@@ -5,7 +5,12 @@ var JwtStrategy = require('passport-jwt').Strategy;
 var ExtractJwt = require('passport-jwt').ExtractJwt;
 var LocalStrategy = require('passport-local').Strategy;
 
-
+/**/
+exports.test2 = function(req, res, next){
+  res.json({
+    message: 'hello'
+  });
+}/**/
 
 var localOptions = {
     usernameField: 'email'
