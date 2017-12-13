@@ -4,7 +4,7 @@ var MongoClient = require('mongodb').MongoClient;
 var objectId = require('mongodb').ObjectID;
 var assert = require('assert');
 var AuthenticationController = require('../app/controllers/authentication');
-//var passportService = require('../config/passport');
+var passportService = require('../config/passport');
 //var passport = require('passport');
 
 //var requireAuth = passport.authenticate('jwt', {session: false}),
