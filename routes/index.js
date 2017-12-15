@@ -29,6 +29,8 @@ router.get('/test2', passportService.test2);
   router.get('/api/auth/protected', requireAuth, function(req, res){
       res.send({ content: 'Success'});
   });
+
+  router.post('/api/auth/update', requireAuth, AuthenticationController.update);
 /**/
 
 router.get('/getData', function(req, res, next) {

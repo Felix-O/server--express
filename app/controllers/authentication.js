@@ -44,6 +44,9 @@ exports.login = function(req, res, next){
 
 exports.register = function(req, res, next){
 
+    var firstname = req.body.firstname;
+    var lastname = req.body.lastname;
+    var username = req.body.username;
     var email = req.body.email;
     var password = req.body.password;
     var role = req.body.role;
@@ -63,10 +66,13 @@ exports.register = function(req, res, next){
         }
 
         if(existingUser){
-            return res.status(422).send({error: 'That email address is already in use'});
+            //return res.status(422).send({error: 'That email address is already in use'});
         }
 
         var user = new User({
+            firstname: firstname,
+            lastname: lastname,
+            username: username,
             email: email,
             password: password,
             role: role
@@ -109,4 +115,57 @@ exports.roleAuthorization = function(roles){
             return next('Unauthorized');
         });
     }
+}
+
+exports.update = function(req, res, next){
+
+    var firstname = req.body.firstname;
+    var lastname = req.body.lastname;
+    var username = req.body.username;
+    var email = req.body.email;
+    var password = req.body.password;
+    var role = req.body.role;
+
+    /*
+    if(!email){
+        return res.status(422).send({error: 'You must enter an email address'});
+    }
+
+    if(!password){
+        return res.status(422).send({error: 'You must enter a password'});
+    }/**/
+
+    User.findOne({email: email}, function(err, existingUser){
+
+        if(err){
+            return next(err);
+        }
+
+        if(existingUser){
+            //return res.status(422).send({error: 'That email address is already in use'});
+
+            var user = new User({
+                firstname: firstname,
+                lastname: lastname,
+                username: username,
+                email: email,
+                password: password,
+                role: role
+            });
+
+            user.save(function(err, user){
+
+                if(err){
+                    return next(err);
+                }
+
+                var userInfo = setUserInfo(user);
+
+                res.status(201).json({
+                    token: 'JWT ' + generateToken(userInfo),
+                    user: userInfo
+                })
+            });
+        }
+    });
 }
