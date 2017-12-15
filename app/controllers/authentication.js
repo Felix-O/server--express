@@ -135,7 +135,7 @@ exports.update = function(req, res, next){
         return res.status(422).send({error: 'You must enter a password'});
     }/**/
 
-    User.findOne({email: email}, function(err, existingUser){
+    User.update({email: email}, function(err, existingUser){
 
         if(err){
             return next(err);
@@ -143,29 +143,29 @@ exports.update = function(req, res, next){
 
         if(existingUser){
             //return res.status(422).send({error: 'That email address is already in use'});
-
-            var user = new User({
-                firstname: firstname,
-                lastname: lastname,
-                username: username,
-                email: email,
-                password: password,
-                role: role
-            });
-
-            user.save(function(err, user){
-
-                if(err){
-                    return next(err);
-                }
-
-                var userInfo = setUserInfo(user);
-
-                res.status(201).json({
-                    token: 'JWT ' + generateToken(userInfo),
-                    user: userInfo
-                })
-            });
         }
+
+        var user = new User({
+            firstname: firstname,
+            lastname: lastname,
+            username: username,
+            email: email,
+            password: password,
+            role: role
+        });
+
+        user.save(function(err, user){
+
+            if(err){
+                return next(err);
+            }
+
+            var userInfo = setUserInfo(user);
+
+            res.status(201).json({
+                token: 'JWT ' + generateToken(userInfo),
+                user: userInfo
+            })
+        });
     });
 }
