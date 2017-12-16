@@ -15,18 +15,13 @@ function generateToken(user){
 function setUserInfo(request){
     return {
         _id: request._id,
+        firstname: request.firstname,
+        lastname: request.lastname,
+        username: request.username,
         email: request.email,
         role: request.role
     };
 }
-
-
-/**
-exports.test = function(req, res, next){
-  res.json({
-    message: 'hello'
-  });
-}/**/
 
 
 
@@ -119,53 +114,21 @@ exports.roleAuthorization = function(roles){
 
 exports.update = function(req, res, next){
 
-    var firstname = req.body.firstname;
-    var lastname = req.body.lastname;
-    var username = req.body.username;
-    var email = req.body.email;
-    var password = req.body.password;
-    var role = req.body.role;
+    var user = req.user;
 
-    /*
-    if(!email){
-        return res.status(422).send({error: 'You must enter an email address'});
-    }
+    var userUpdates = {
+      firstname: user.firstname,
+      lastname: user.lastname,
+      username: user.username,
+      email: user.email,
+      password: user.password,
+      role: user.role
+    };
 
-    if(!password){
-        return res.status(422).send({error: 'You must enter a password'});
-    }/**/
-
-    User.update({email: email}, function(err, existingUser){
-
-        if(err){
-            return next(err);
-        }
-
-        if(existingUser){
-            //return res.status(422).send({error: 'That email address is already in use'});
-        }
-
-        var user = new User({
-            firstname: firstname,
-            lastname: lastname,
-            username: username,
-            email: email,
-            password: password,
-            role: role
-        });
-
-        user.save(function(err, user){
-
-            if(err){
-                return next(err);
-            }
-
-            var userInfo = setUserInfo(user);
-
-            res.status(201).json({
-                token: 'JWT ' + generateToken(userInfo),
-                user: userInfo
-            })
-        });
+    User.update({_id: user._id}, userUpdates, function(err, existingUser){
+      if (err) {
+        res.send(err);
+      }
+      res.send(raw);
     });
 }
