@@ -121,7 +121,7 @@ exports.update = function(req, res, next){
       lastname: user.lastname,
       username: user.username,
       email: user.email,
-      password: user.password,
+      //password: user.password,
       role: user.role
     };
 
