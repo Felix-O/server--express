@@ -125,7 +125,7 @@ exports.update = function(req, res, next){
       role: user.role
     };
 
-    User.update({_id: user._id}, userUpdates, function(err, existingUser){
+    User.update({_id: user._id}, {$set: {firstname: user.firstname}}, function(err, existingUser){
       if (err) {
         res.send(err);
       }
