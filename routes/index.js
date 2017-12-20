@@ -30,7 +30,8 @@ router.get('/test2', passportService.test2);
       res.send({ content: 'Success'});
   });
 
-  router.post('/api/auth/update', AuthenticationController.update);
+  router.put('/api/auth/update', AuthenticationController.update);
+  router.delete('/api/auth/delete', AuthenticationController.delete);
 /**/
 
 router.get('/getData', function(req, res, next) {

@@ -125,10 +125,31 @@ exports.update = function(req, res, next){
       role: user.role
     };
 
-    User.update({_id: user._id}, {$set: {firstname: user.firstname}}, function(err, existingUser){
+    User.update({_id: user._id}, {$set: {firstname: user.firstname}}, function(err, raw){
       if (err) {
         res.json(err);
       }
-      res.jsonwebtoken(raw);
+      res.json(raw);
+    });
+}
+
+exports.delete = function(req, res, next){
+
+    var user = req.user;
+
+    var userUpdates = {
+      firstname: user.firstname,
+      lastname: user.lastname,
+      username: user.username,
+      email: user.email,
+      //password: user.password,
+      role: user.role
+    };
+
+    User.findOneAndRemove({_id: user._id}, function(err){
+      if (err) {
+        res.json(err);
+      }
+      return res.status(200).send();
     });
 }
