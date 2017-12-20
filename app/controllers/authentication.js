@@ -127,8 +127,8 @@ exports.update = function(req, res, next){
 
     User.update({_id: user._id}, {$set: {firstname: user.firstname}}, function(err, existingUser){
       if (err) {
-        res.send(err);
+        res.json(err);
       }
-      res.send(raw);
+      res.jsonwebtoken(raw);
     });
 }
