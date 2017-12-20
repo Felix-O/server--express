@@ -135,18 +135,9 @@ exports.update = function(req, res, next){
 
 exports.delete = function(req, res, next){
 
-    var user = req.user;
+    var id = req.body;
 
-    var userUpdates = {
-      firstname: user.firstname,
-      lastname: user.lastname,
-      username: user.username,
-      email: user.email,
-      //password: user.password,
-      role: user.role
-    };
-
-    User.findOneAndRemove({_id: user._id}, function(err){
+    User.findOneAndRemove({_id: id}, function(err){
       if (err) {
         res.json(err);
       }
