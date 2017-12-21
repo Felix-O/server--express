@@ -132,7 +132,7 @@ exports.update = function(req, res, next){
       res.json(req.body);
     });
     /**/
-    res.json(userUpdates.firstname);
+    res.json(user.firstname);
 }
 
 exports.delete = function(req, res, next){
