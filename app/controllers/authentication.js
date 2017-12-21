@@ -115,7 +115,7 @@ exports.roleAuthorization = function(roles){
 exports.update = function(req, res, next){
 
     var user = req.body;
-/**
+
     var userUpdates = {
       firstname: user.firstname,
       lastname: user.lastname,
@@ -124,7 +124,7 @@ exports.update = function(req, res, next){
       //password: user.password,
       //role: user.role
     };
-
+/**
     User.update({_id: user._id}, {$set: {firstname: user.firstname}}, function(err, raw){
       if (err) {
         res.json(req.body);
@@ -132,7 +132,7 @@ exports.update = function(req, res, next){
       res.json(req.body);
     });
     /**/
-    res.json(user);
+    res.json(userUpdates.firstname);
 }
 
 exports.delete = function(req, res, next){
