@@ -114,12 +114,11 @@ exports.roleAuthorization = function(roles){
 
 exports.update = function(req, res, next){
 
-    var user = req.body;
-
     var userUpdates = {
-      firstname: user.firstname,
-      lastname: user.lastname,
-      username: user.username,
+      _id: req.body._id,
+      firstname: req.body.firstname,
+      lastname: req.body.lastname,
+      username: req.body.username,
       //email: user.email,
       //password: user.password,
       //role: user.role
