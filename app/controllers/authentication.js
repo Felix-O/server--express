@@ -124,14 +124,14 @@ exports.update = function(req, res, next){
       //role: user.role
     };
 /**
-    User.update({_id: user._id}, {$set: {firstname: user.firstname}}, function(err, raw){
+    User.update({_id: userUpdates._id}, {$set: {firstname: user.firstname}}, function(err, raw){
       if (err) {
         res.json(req.body);
       }
       res.json(req.body);
     });
     /**/
-    res.json(userUpdates.firstname);
+    res.json(userUpdates._id);
 }
 
 exports.delete = function(req, res, next){
