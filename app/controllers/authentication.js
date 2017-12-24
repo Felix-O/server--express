@@ -61,7 +61,7 @@ exports.register = function(req, res, next){
         }
 
         if(existingUser){
-            //return res.status(422).send({error: 'That email address is already in use'});
+            return res.status(422).send({error: 'That email address is already in use'});
         }
 
         var user = new User({
@@ -126,16 +126,13 @@ exports.update = function(req, res, next){
 /**/
     User.update({_id: userUpdates._id}, {$set: {username: userUpdates.username}}, function(err, raw){
       if (err) {
-        res.json(err);
+        return next(err);
       }
-      if (raw)
-      {
+      if (raw) {
         res.json(req.body);
       }
-
     });
-    /**/
-    //res.json(userUpdates._id);
+/**/
 }
 
 exports.delete = function(req, res, next){
