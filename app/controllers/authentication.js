@@ -124,7 +124,7 @@ exports.update = function(req, res, next){
       //role: user.role
     };
 /**/
-    User.update({_id: userUpdates._id}, {$set: {firstname: userUpdates.firstname},{lastname: userUpdates.lastname},{username: userUpdates.username}}, function(err, raw){
+    User.update({_id: userUpdates._id}, {$set: {lastname: userUpdates.lastname}}, function(err, raw){
       if (err) {
         res.json(err);
       }
