@@ -7,11 +7,9 @@ exports.users = function(req, res, next){
     var userID;
 
     users.forEach(function(user) {
-      //userMap[user.firstname] = user;
-      userID = user._id;
-      res.send(userID);
+      userMap[] = user;
     });
 
-    //res.send(userMap);
+    res.send(userMap);
   });
 }
