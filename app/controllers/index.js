@@ -2,7 +2,7 @@ var User = require('../models/user');
 
 exports.users = function(req, res, next){
 
-  User.find({}, function(err, usersExist){
+  User.find({_id: ""}, function(err, usersExist){
     if(err){
       return(next);
     }
