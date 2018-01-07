@@ -11,6 +11,6 @@ exports.users = function(req, res, next){
       //userData = user._id;
     });
 
-    res.send(userData);
+    res.json(userData);
   });
 }
