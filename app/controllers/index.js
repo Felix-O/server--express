@@ -4,12 +4,13 @@ exports.users = function(req, res, next){
 
   User.find({}, function(err, users) {
     var userMap = {};
+    var userData;
 
     users.forEach(function(user) {
       //userMap[user._id] = user;
-      userMap = user;
+      userData = user;
     });
 
-    res.send(userMap);
+    res.send(userData);
   });
 }
