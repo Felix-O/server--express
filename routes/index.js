@@ -4,6 +4,7 @@ var MongoClient = require('mongodb').MongoClient;
 var objectId = require('mongodb').ObjectID;
 var assert = require('assert');
 var AuthenticationController = require('../app/controllers/authentication');
+var IndexController = require('../app/controllers/index');
 var passportService = require('../config/passport');
 var passport = require('passport');
 
@@ -32,6 +33,7 @@ router.get('/test2', passportService.test2);
 
   router.put('/api/auth/update', AuthenticationController.update);
   router.post('/api/auth/delete', AuthenticationController.delete);
+  router.post('/api/index/users', IndexController.users);
 /**/
 
 router.get('/getData', function(req, res, next) {
