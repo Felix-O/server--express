@@ -33,7 +33,7 @@ router.get('/test2', passportService.test2);
 
   router.put('/api/auth/update', AuthenticationController.update);
   router.post('/api/auth/delete', AuthenticationController.delete);
-  router.post('/api/index/users', IndexController.users);
+  router.get('/api/index/users', IndexController.users);
 /**/
 
 router.get('/getData', function(req, res, next) {
