@@ -7,7 +7,7 @@ exports.users = function(req, res, next){
     var userData;
 
     users.forEach(function(user) {
-      userMap[user._id] = user._id;
+      userMap[id] = user._id;
       //userData = user._id;
     });
 
