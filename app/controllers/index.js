@@ -2,7 +2,7 @@ var User = require('../models/user');
 
 exports.users = function(req, res, next){
 
-  User.find({_id: ""}, function(err, usersExist){
+  User.find(function(err, usersExist){
     if(err){
       return(next);
     }
@@ -11,7 +11,7 @@ exports.users = function(req, res, next){
       return res.status(200).send({data: 'There is data'});
     }
 
-    res.json();
+    res.json(usersExist);
 
   });
 }
