@@ -2,16 +2,13 @@ var User = require('../models/user');
 
 exports.users = function(req, res, next){
 
-  User.find(function(err, usersExist){
-    if(err){
-      return(next);
-    }
+  User.find({}, function(err, users) {
+    var userMap = {};
 
-    if(usersExist){
-      return res.status(200).send({data: 'There is data'});
-    }
+    users.forEach(function(user) {
+      userMap[user._id] = user;
+    });
 
-    res.json(usersExist);
-
+    res.send(userMap);
   });
 }
