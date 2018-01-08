@@ -2,7 +2,7 @@ var User = require('../models/user');
 
 exports.users = function(req, res, next){
 
-  User.find({}, 'firstname', function(err, users) {
+  User.find({}, 'firstname lastname username', function(err, users) {
     var userMap = {};
     //var userData;
 
