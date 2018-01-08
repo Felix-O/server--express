@@ -9,6 +9,6 @@ exports.users = function(req, res, next){
       //userMap[user._id] = user._id;
     });
 
-    res.send(users[]._id);
+    res.send(users[1]);
   });
 }
