@@ -64,6 +64,10 @@ exports.register = function(req, res, next){
             return res.status(422).send({error: 'That email address is already in use'});
         }
 
+        if(existingUser.username == username){
+            return res.status(422).send({error: 'That username is already in use'});
+        }
+
         var user = new User({
             firstname: firstname,
             lastname: lastname,
@@ -124,6 +128,16 @@ exports.update = function(req, res, next){
       //role: user.role
     };
 /**/
+  User.findOne({username: userUpdates.username}, function(err, existingUser){
+
+    if(err){
+        return next(err);
+    }
+
+    if(existingUser){
+        return res.status(422).send({error: 'That username is already in use'});
+    }
+
     User.update({_id: userUpdates._id}, {$set: {firstname: userUpdates.firstname, lastname: userUpdates.lastname, username: userUpdates.username}}, function(err, raw){
       if (err) {
         return next(err);
@@ -132,6 +146,7 @@ exports.update = function(req, res, next){
         res.json(req.body);
       }
     });
+  });
 /**/
 }
 

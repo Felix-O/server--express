@@ -14,3 +14,12 @@ exports.users = function(req, res, next){
     res.send(users);
   });
 }
+
+exports.user = function(req, res, next){
+
+  var id = req.body;
+
+  User.findById( id , 'firstname lastname username', function(err, user) {
+    res.send(user);
+  });
+}
