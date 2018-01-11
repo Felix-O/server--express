@@ -64,9 +64,10 @@ exports.register = function(req, res, next){
             return res.status(422).send({error: 'That email address is already in use'});
         }
 
+        /*
         if(existingUser.username == username){
             return res.status(422).send({error: 'That username is already in use'});
-        }
+        }/**/
 
         var user = new User({
             firstname: firstname,
