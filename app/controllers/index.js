@@ -13,7 +13,7 @@ exports.users = function(req, res, next){
   });
 }
 
-/*
+
 exports.user = function(req, res, next){
   var id = req.body;
   User.findById( id , 'firstname lastname username', function(err, user) {
