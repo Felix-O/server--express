@@ -16,7 +16,7 @@ exports.users = function(req, res, next){
 
 exports.user = function(req, res, next){
   var username = req.body;
-  res.json(username);
+  res.json("username");
   /*User.find( {username: username} , 'firstname lastname username email role', function(err, user) {
     res.json(user);
   });/**/
