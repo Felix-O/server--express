@@ -123,7 +123,7 @@ exports.update = function(req, res, next){
       _id: req.body._id,
       firstname: req.body.firstname,
       lastname: req.body.lastname,
-      //username: req.body.username,
+      username: req.body.username,
       //email: user.email,
       //password: user.password,
       //role: user.role
