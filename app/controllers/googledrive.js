@@ -20,5 +20,5 @@ exports.getContents = function(req, res, next){
     }
     res.send(metadata.name);
   });/**/
-  res.send("hello");
+  res.json("hello");
 }
