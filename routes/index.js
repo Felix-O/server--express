@@ -5,6 +5,7 @@ var objectId = require('mongodb').ObjectID;
 var assert = require('assert');
 var AuthenticationController = require('../app/controllers/authentication');
 var IndexController = require('../app/controllers/index');
+var GoogleDriveController = require('../app/controllers/googledrive');
 var passportService = require('../config/passport');
 var passport = require('passport');
 
@@ -35,6 +36,7 @@ router.get('/test2', passportService.test2);
   router.post('/api/auth/delete', AuthenticationController.delete);
   router.get('/api/index/users', IndexController.users);
   router.post('/api/index/user', IndexController.user);
+  router.get('/api/googledrive/filecontents', GoogleDriveController.getContents);
 /**/
 
 router.get('/getData', function(req, res, next) {
