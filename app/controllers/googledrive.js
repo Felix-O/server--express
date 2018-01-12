@@ -6,11 +6,11 @@ var googleAuth = require('google-auth-library');
 
 // If modifying these scopes, delete your previously saved credentials
 // at ~/.credentials/drive-nodejs-quickstart.json
-var SCOPES = ['https://www.googleapis.com/auth/drive.metadata.readonly'];
+var SCOPES = ['https://www.googleapis.com/auth/drive.files'];
 var TOKEN_DIR = (process.env.HOME || process.env.HOMEPATH ||
     process.env.USERPROFILE) + '/.credentials/';
 var TOKEN_PATH = TOKEN_DIR + 'drive-nodejs-quickstart.json';
-
+/*
 // Load client secrets from a local file.
 fs.readFile('client_secret.json', function processClientSecrets(err, content) {
   if (err) {
@@ -29,6 +29,7 @@ fs.readFile('client_secret.json', function processClientSecrets(err, content) {
  * @param {Object} credentials The authorization client credentials.
  * @param {function} callback The callback to call with the authorized client.
  */
+ /*
 function authorize(credentials, callback) {
   var clientSecret = credentials.installed.client_secret;
   var clientId = credentials.installed.client_id;
@@ -55,6 +56,7 @@ function authorize(credentials, callback) {
  * @param {getEventsCallback} callback The callback to call with the authorized
  *     client.
  */
+ /*
 function getNewToken(oauth2Client, callback) {
   var authUrl = oauth2Client.generateAuthUrl({
     access_type: 'offline',
@@ -84,6 +86,7 @@ function getNewToken(oauth2Client, callback) {
  *
  * @param {Object} token The token to store to disk.
  */
+ /*
 function storeToken(token) {
   try {
     fs.mkdirSync(TOKEN_DIR);
@@ -102,8 +105,9 @@ var drive = google.drive({
   version: 'v3',
   auth: auth
 });
+/**/
 
-exports.getContents = function(req, res, next){/**/
+exports.getContents = function(req, res, next){/**
   drive.files.get({
     fileId: "1q2VD0k1xStuqEkTYSXwTDusn6mpsutWt8FpoI9h9VGs"
   }, function (err, metadata){
@@ -112,5 +116,5 @@ exports.getContents = function(req, res, next){/**/
     }
     res.json(metadata.name);
   });/**/
-  //res.json("hello");
+  res.json(TOKEN_DIR);
 }
