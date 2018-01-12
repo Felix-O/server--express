@@ -123,22 +123,12 @@ exports.update = function(req, res, next){
       _id: req.body._id,
       firstname: req.body.firstname,
       lastname: req.body.lastname,
-      username: req.body.username,
+      //username: req.body.username,
       //email: user.email,
       //password: user.password,
       //role: user.role
     };
 /**/
-  User.findOne({username: userUpdates.username}, function(err, existingUser){
-
-    if(err){
-        return next(err);
-    }
-
-    if(existingUser){
-        return res.status(422).send({error: 'That username is already in use'});
-    }
-
     User.update({_id: userUpdates._id}, {$set: {firstname: userUpdates.firstname, lastname: userUpdates.lastname, username: userUpdates.username}}, function(err, raw){
       if (err) {
         return next(err);
@@ -147,7 +137,6 @@ exports.update = function(req, res, next){
         res.json(req.body);
       }
     });
-  });
 /**/
 }
 
