@@ -8,7 +8,7 @@ var IndexController = require('../app/controllers/index');
 var GoogleDriveController = require('../app/controllers/googledrive');
 var passportService = require('../config/passport');
 var passport = require('passport');
-var quickStart = ('quickstart');
+var quickStart = require('quickstart');
 
 var requireAuth = passport.authenticate('jwt', {session: false}),
   requireLogin = passport.authenticate('local', {session: false});
