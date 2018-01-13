@@ -1,4 +1,3 @@
-
 var fs = require('fs');
 var readline = require('readline');
 var google = require('googleapis');
@@ -6,11 +5,13 @@ var googleAuth = require('google-auth-library');
 
 // If modifying these scopes, delete your previously saved credentials
 // at ~/.credentials/drive-nodejs-quickstart.json
-var SCOPES = ['https://www.googleapis.com/auth/drive.files'];
+var SCOPES = ['https://www.googleapis.com/auth/drive'];
 var TOKEN_DIR = (process.env.HOME || process.env.HOMEPATH ||
     process.env.USERPROFILE) + '/.credentials/';
 var TOKEN_PATH = TOKEN_DIR + 'drive-nodejs-quickstart.json';
-/*
+
+console.log(TOKEN_PATH);
+
 // Load client secrets from a local file.
 fs.readFile('client_secret.json', function processClientSecrets(err, content) {
   if (err) {
@@ -19,7 +20,7 @@ fs.readFile('client_secret.json', function processClientSecrets(err, content) {
   }
   // Authorize a client with the loaded credentials, then call the
   // Drive API.
-  authorize(JSON.parse(content), listFiles);
+  authorize(JSON.parse(content), getFileContents);
 });
 
 /**
@@ -29,7 +30,6 @@ fs.readFile('client_secret.json', function processClientSecrets(err, content) {
  * @param {Object} credentials The authorization client credentials.
  * @param {function} callback The callback to call with the authorized client.
  */
- /*
 function authorize(credentials, callback) {
   var clientSecret = credentials.installed.client_secret;
   var clientId = credentials.installed.client_id;
@@ -56,7 +56,6 @@ function authorize(credentials, callback) {
  * @param {getEventsCallback} callback The callback to call with the authorized
  *     client.
  */
- /*
 function getNewToken(oauth2Client, callback) {
   var authUrl = oauth2Client.generateAuthUrl({
     access_type: 'offline',
@@ -86,7 +85,6 @@ function getNewToken(oauth2Client, callback) {
  *
  * @param {Object} token The token to store to disk.
  */
- /*
 function storeToken(token) {
   try {
     fs.mkdirSync(TOKEN_DIR);
@@ -99,22 +97,21 @@ function storeToken(token) {
   console.log('Token stored to ' + TOKEN_PATH);
 }
 
-var auth = new googleAuth();
+/**
+ * Lists the names and IDs of up to 10 files.
+ *
+ * @param {google.auth.OAuth2} auth An authorized OAuth2 client.
+ */
 
-var drive = google.drive({
-  version: 'v3',
-  auth: auth
-});
-/**/
-
-exports.getContents = function(req, res, next){/**
-  drive.files.get({
-    fileId: "1q2VD0k1xStuqEkTYSXwTDusn6mpsutWt8FpoI9h9VGs"
-  }, function (err, metadata){
+exports.getContents = function(req, res, next){/**/
+  drive.files.export({
+    fileId: "1q2VD0k1xStuqEkTYSXwTDusn6mpsutWt8FpoI9h9VGs",
+    mimeType: 'text/html'//,
+    //auth: auth
+  }, function (err, content){
     if(err){
       return next(err);
     }
-    res.json(metadata.name);
+    res.json(content);
   });/**/
-  res.json(TOKEN_DIR);
 }

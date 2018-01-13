@@ -5,10 +5,12 @@ var googleAuth = require('google-auth-library');
 
 // If modifying these scopes, delete your previously saved credentials
 // at ~/.credentials/drive-nodejs-quickstart.json
-var SCOPES = ['https://www.googleapis.com/auth/drive.metadata.readonly'];
+var SCOPES = ['https://www.googleapis.com/auth/drive'];
 var TOKEN_DIR = (process.env.HOME || process.env.HOMEPATH ||
     process.env.USERPROFILE) + '/.credentials/';
 var TOKEN_PATH = TOKEN_DIR + 'drive-nodejs-quickstart.json';
+
+console.log(TOKEN_PATH);
 
 // Load client secrets from a local file.
 fs.readFile('client_secret.json', function processClientSecrets(err, content) {
@@ -18,7 +20,7 @@ fs.readFile('client_secret.json', function processClientSecrets(err, content) {
   }
   // Authorize a client with the loaded credentials, then call the
   // Drive API.
-  authorize(JSON.parse(content), listFiles);
+  authorize(JSON.parse(content), getFileContents);
 });
 
 /**
@@ -100,6 +102,23 @@ function storeToken(token) {
  *
  * @param {google.auth.OAuth2} auth An authorized OAuth2 client.
  */
+ function getFileContents(auth) {
+   var service = google.drive('v3');
+
+   service.files.export({
+     fileId: '1q2VD0k1xStuqEkTYSXwTDusn6mpsutWt8FpoI9h9VGs',
+     mimeType: 'text/html',
+     auth: auth
+   }, function(err, content){
+     if(err){
+       console.log('The API returned an error: ' + err);
+       return;
+     }
+     console.log(content);
+   });
+   //console.log("working so far");
+ }
+ /*
 function listFiles(auth) {
   var service = google.drive('v3');
   service.files.list({
@@ -122,4 +141,4 @@ function listFiles(auth) {
       }
     }
   });
-}
+}/**/
