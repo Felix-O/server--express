@@ -4,7 +4,7 @@ var google = require('googleapis');
 var googleAuth = require('google-auth-library');
 
 exports.getContents = function(req, res, next){/**/
-  var auth = google.auth.OAuth2;
+  var auth = google.auth.OAuth2;/*
   var drive = google.drive({
     version: 'v3',
     auth: auth
