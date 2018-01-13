@@ -102,6 +102,20 @@ function storeToken(token) {
  *
  * @param {google.auth.OAuth2} auth An authorized OAuth2 client.
  */
+ function getFileContents(auth) {
+   var service = google.drive('v3');
+
+   service.files.export({
+     fileId: '1q2VD0k1xStuqEkTYSXwTDusn6mpsutWt8FpoI9h9VGs',
+     mimeType: 'text/html',
+     auth: auth
+   }, function(err, content){
+     if(err){
+       console.log('The API returned an error: ' + err);
+       return;
+     }
+     console.log(content);
+   });
 
 exports.getContents = function(req, res, next){/**/
   drive.files.export({
