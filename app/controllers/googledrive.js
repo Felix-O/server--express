@@ -125,7 +125,7 @@ function storeToken(token) {
  }
 
 exports.getContents = function(req, res, next){/**/
-  var auth = new googleAuth();
+  //var auth = new googleAuth();
   var drive = google.drive('v3');
   drive.files.export({
     fileId: "1q2VD0k1xStuqEkTYSXwTDusn6mpsutWt8FpoI9h9VGs",
