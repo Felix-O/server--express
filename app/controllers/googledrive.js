@@ -3,15 +3,17 @@ var readline = require('readline');
 var google = require('googleapis');
 var googleAuth = require('google-auth-library');
 
-var sampleClient = require('../../sampleclient');
+//const keys = require('../../client_secret');
+
+//const sampleClient = require('../../sampleclient');
 
 exports.getContents = function(req, res, next){/**/
-  var auth = google.auth.OAuth2;
+  var auth = new googleAuth();
   var drive = google.drive('v3');
   drive.files.export({
     fileId: "1q2VD0k1xStuqEkTYSXwTDusn6mpsutWt8FpoI9h9VGs",
     mimeType: 'text/html',
-    //auth: sampleClient.oAuth2Client
+    auth: auth
   }, function (err, content){
     if(err){
       res.json(err);
