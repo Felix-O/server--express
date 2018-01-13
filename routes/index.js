@@ -37,7 +37,7 @@ router.get('/test2', passportService.test2);
   router.post('/api/auth/delete', AuthenticationController.delete);
   router.get('/api/index/users', IndexController.users);
   router.post('/api/index/user', IndexController.user);
-  router.get('/api/googledrive/filecontents', quickStart.getFileContents());
+  //router.get('/api/googledrive/filecontents', quickStart.getFileContents());
 /**/
 
 router.get('/getData', function(req, res, next) {
