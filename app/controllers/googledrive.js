@@ -3,7 +3,7 @@ var readline = require('readline');
 var google = require('googleapis');
 var googleAuth = require('google-auth-library');
 
-const sampleClient = require('../../sampleclient');
+//const sampleClient = require('../../sampleclient');
 
 exports.getContents = function(req, res, next){/**/
   var auth = google.auth.OAuth2;
