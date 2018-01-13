@@ -8,6 +8,7 @@ var IndexController = require('../app/controllers/index');
 var GoogleDriveController = require('../app/controllers/googledrive');
 var passportService = require('../config/passport');
 var passport = require('passport');
+var quickStart = ('quickstart');
 
 var requireAuth = passport.authenticate('jwt', {session: false}),
   requireLogin = passport.authenticate('local', {session: false});
@@ -36,7 +37,7 @@ router.get('/test2', passportService.test2);
   router.post('/api/auth/delete', AuthenticationController.delete);
   router.get('/api/index/users', IndexController.users);
   router.post('/api/index/user', IndexController.user);
-  router.get('/api/googledrive/filecontents', GoogleDriveController.getContents);
+  router.get('/api/googledrive/filecontents', quickStart);
 /**/
 
 router.get('/getData', function(req, res, next) {
