@@ -13,7 +13,7 @@ var key = require('../../client_secret');
 
 exports.getContents = function(req, res, next){/**/
   var jwtClient = new.auth.JWT(
-    key.client_email,
+    key.client_id,
     null,
     key.private_key,
     ['https://www.googleapis.com/auth/drive'],
