@@ -23,7 +23,7 @@ exports.getContents = function(req, res, next){/**/
   var auth =  new OAuth2(
     "602320724221-131812hpjagaetm44p08obaip3vmmcn3.apps.googleusercontent.com",
     "-fXm21-p5yxgkUeeO_d9bqgF",
-    //"urn:ietf:wg:oauth:2.0:oob"
+    "urn:ietf:wg:oauth:2.0:oob"
   );
   google.options({
     auth: auth
@@ -39,7 +39,7 @@ exports.getContents = function(req, res, next){/**/
         fileId: '1q2VD0k1xStuqEkTYSXwTDusn6mpsutWt8FpoI9h9VGs',
         mimeType: 'text/html',
         auth: auth
-      }, /*{
+      }, /**/{
         encoding: null // Make sure we get the binary data
       },/**/ function (err, content){
         if(err){
