@@ -9,11 +9,25 @@ var key = require('../../client_secret');
 //const sampleClient = require('../../sampleclient');
 //var SCOPES = ['https://www.googleapis.com/auth/drive'];
 
-exports.getContents = function(req, res, next){/**/
+exports.getContents = function(req, res, next){
+  var SCOPES = ['https://www.googleapis.com/auth/drive'];
+  var TOKEN_DIR = (process.env.HOME || process.env.HOMEPATH ||
+      process.env.USERPROFILE) + '/.credentials/';
+  var TOKEN_PATH = TOKEN_DIR + 'drive-nodejs-quickstart.json';
+  // Load client secrets from a local file.
+  res.json(TOKEN_PATH);
+}
+
+
+
+
+
+
+exports.getContents2 = function(req, res, next){
+  /**/
+  var drive = google.drive('v3');
   /**/
   var auth3 = google.auth.OAuth2;
-  /**
-  var OAuth2 = google.auth.OAuth2;
   /**
   var auth =  new OAuth2(
     key.client_id,
@@ -37,9 +51,7 @@ exports.getContents = function(req, res, next){/**/
     // Optional, provide an expiry_date (milliseconds since the Unix Epoch)
     // expiry_date: (new Date()).getTime() + (1000 * 60 * 60 * 24 * 7)
   });
-  /**/
-
-  var drive = google.drive('v3');
+  /**
   var jwtClient = new google.auth.JWT(
     key.client_email,
     null,
