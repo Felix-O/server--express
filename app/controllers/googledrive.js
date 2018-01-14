@@ -22,7 +22,7 @@ exports.getContents = function(req, res, next){/**/
   var auth =  new OAuth2(
   "602320724221-131812hpjagaetm44p08obaip3vmmcn3.apps.googleusercontent.com",
   "-fXm21-p5yxgkUeeO_d9bqgF",
-  "urn:ietf:wg:oauth:2.0:oob"
+  //"urn:ietf:wg:oauth:2.0:oob"
 );
   var drive = google.drive('v3');
   drive.files.export({
@@ -34,7 +34,7 @@ exports.getContents = function(req, res, next){/**/
       res.json(err);
       return next(err);
     }
-    res.json(JSON.parse(content));
+    res.json(content);
   });/**/
   //res.json(auth);
 }
