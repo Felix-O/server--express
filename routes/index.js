@@ -34,7 +34,7 @@ router.get('/test2', passportService.test2);
   });
 
   router.put('/api/auth/update', AuthenticationController.update);
-  router.post('/api/auth/delete', AuthenticationController.delete);
+  router.delete('/api/auth/delete', AuthenticationController.delete);
   router.get('/api/index/users', IndexController.users);
   router.post('/api/index/user', IndexController.user);
   router.get('/api/googledrive/filecontents', GoogleDriveController.getContents);
