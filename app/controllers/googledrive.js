@@ -12,8 +12,8 @@ var key = require('../../client_secret');
 exports.getContents = function(req, res, next){/**/
   var OAuth2 = google.auth.OAuth2;
   var drive = google.drive('v2');
-  /*var jwtClient = new.auth.JWT(
-    key.client_id,
+  var jwtClient = new.auth.JWT(
+    key.client_email,
     null,
     key.private_key,
     ['https://www.googleapis.com/auth/drive'],
