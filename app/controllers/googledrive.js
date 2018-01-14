@@ -17,7 +17,7 @@ exports.getContents = function(req, res, next){
   // Load client secrets from a local file.
   //res.json(TOKEN_PATH);
   // Load client secrets from a local file.
-  fs.readFile('client_secret2.json', function processClientSecrets(err, content) {
+  fs.readFile('client_secret.json', function processClientSecrets(err, content) {
     if (err) {
       res.json('Error loading client secret file: ' + err);
       return;
