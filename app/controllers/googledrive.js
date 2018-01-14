@@ -10,7 +10,9 @@ var key = require('../../client_secret');
 //var SCOPES = ['https://www.googleapis.com/auth/drive'];
 
 exports.getContents = function(req, res, next){/**/
+  /**
   var OAuth2 = google.auth.OAuth2;
+  /**
   var auth =  new OAuth2(
     "602320724221-131812hpjagaetm44p08obaip3vmmcn3.apps.googleusercontent.com",
     "-fXm21-p5yxgkUeeO_d9bqgF",
@@ -19,26 +21,34 @@ exports.getContents = function(req, res, next){/**/
   /**
   google.options({
     auth: auth
-  });/**/
+  });
+  /**
+  auth.setCredentials({
+    access_token: 'ACCESS TOKEN HERE',
+    refresh_token: 'REFRESH TOKEN HERE'
+    // Optional, provide an expiry_date (milliseconds since the Unix Epoch)
+    // expiry_date: (new Date()).getTime() + (1000 * 60 * 60 * 24 * 7)
+  });
+  /**/
 
-  var drive = google.drive('v1');
+  var drive = google.drive('v2');
   var jwtClient = new google.auth.JWT(
     key.client_email,
     null,
     key.private_key,
     ['https://www.googleapis.com/auth/drive'],
     null
-  );/**/
-  /**
+  );
+  /**/
   jwtClient.authorize( function(err, tokens) {
       if(err){
         res.json(err);
         return;
-      }/*jwtClient*/
-
-      drive.files.get({
+      }
+      /**/
+      drive.files.export({
         fileId: '1q2VD0k1xStuqEkTYSXwTDusn6mpsutWt8FpoI9h9VGs',
-        //mimeType: 'text/plain',
+        mimeType: 'text/plain',
         auth: auth
       }, /**{
         encoding: null // Make sure we get the binary data
@@ -49,5 +59,6 @@ exports.getContents = function(req, res, next){/**/
         }
         res.json(content);
       });/**/
-  //});
+  });
+  /**/
 }
