@@ -3,9 +3,9 @@ var readline = require('readline');
 var google = require('googleapis');
 var googleAuth = require('google-auth-library');
 var key = require('../../client_secret');
+var OAuth2 = google.auth.OAuth2;
 
 //var TOKEN_PATH = require('../../drive-nodejs-quickstart');
-//var OAuth2 = google.auth.OAuth2;
 //const keys = require('../../client_secret');
 //const sampleClient = require('../../sampleclient');
 //var SCOPES = ['https://www.googleapis.com/auth/drive'];
