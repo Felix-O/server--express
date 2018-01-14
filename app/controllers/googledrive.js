@@ -29,7 +29,7 @@ exports.getContents = function(req, res, next){/**/
     //null
   );/**/
 
-  /*jwtClient.authorize( function(err, tokens) {
+  jwtClient.authorize( function(err, tokens) {
       if(err){
         res.json(err);
         return;
@@ -38,7 +38,7 @@ exports.getContents = function(req, res, next){/**/
       drive.files.export({
         fileId: '1q2VD0k1xStuqEkTYSXwTDusn6mpsutWt8FpoI9h9VGs',
         mimeType: 'text/plain',
-        auth: auth
+        auth: jwtClient
       }, /**{
         encoding: null // Make sure we get the binary data
       },/**/ function (err, content){
@@ -48,5 +48,5 @@ exports.getContents = function(req, res, next){/**/
         }
         res.json(content);
       });/**/
-  //});
+  });
 }
