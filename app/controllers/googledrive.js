@@ -27,14 +27,14 @@ exports.getContents = function(req, res, next){/**/
   var drive = google.drive('v3');
   drive.files.export({
     fileId: "1q2VD0k1xStuqEkTYSXwTDusn6mpsutWt8FpoI9h9VGs",
-    mimeType: 'text/html',
+    mimeType: 'application/json',
     auth: auth
   }, function (err, content){
     if(err){
       res.json(err);
       return next(err);
     }
-    res.send(content);
+    res.json(content);
   });/**/
   //res.json(auth);
 }
