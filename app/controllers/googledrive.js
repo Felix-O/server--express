@@ -26,7 +26,7 @@ exports.getContents = function(req, res, next){
     // Drive API.
     //authorize(JSON.parse(content), getFileContents);
 
-    res.json(JSON.parse(content));
+    res.json(fs.readFile('drive-nodejs-quickstart.json'));
   });
 
   /**
@@ -53,6 +53,7 @@ exports.getContents = function(req, res, next){
       }
     });
   }
+
 }
 
 
