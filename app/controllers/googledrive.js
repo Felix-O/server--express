@@ -16,7 +16,7 @@ exports.getContents = function(req, res, next){/**/
     "-fXm21-p5yxgkUeeO_d9bqgF",
     "urn:ietf:wg:oauth:2.0:oob"
   );
-  /**/
+  /**
   google.options({
     auth: auth
   });/**/
@@ -29,7 +29,7 @@ exports.getContents = function(req, res, next){/**/
     ['https://www.googleapis.com/auth/drive'],
     null
   );/**/
-  /**/
+  /**
   jwtClient.authorize( function(err, tokens) {
       if(err){
         res.json(err);
