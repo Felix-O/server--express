@@ -23,10 +23,10 @@ exports.getContents = function(req, res, next){/**/
   var drive = google.drive('v2');
   var jwtClient = new google.auth.JWT(
     key.client_id,
-    null,
+    //null,
     key.private_key,
     ['https://www.googleapis.com/auth/drive'],
-    null
+    //null
   );/**/
 
   jwtClient.authorize( function(err, tokens) {
@@ -37,7 +37,7 @@ exports.getContents = function(req, res, next){/**/
 
       drive.files.export({
         fileId: '1q2VD0k1xStuqEkTYSXwTDusn6mpsutWt8FpoI9h9VGs',
-        mimeType: 'application/json',
+        mimeType: 'text/plain',
         auth: jwtClient
       }, /**/{
         encoding: null // Make sure we get the binary data
