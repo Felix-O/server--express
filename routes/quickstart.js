@@ -107,7 +107,7 @@ function storeToken(token) {
 
    service.files.export({
      fileId: '1q2VD0k1xStuqEkTYSXwTDusn6mpsutWt8FpoI9h9VGs',
-     mimeType: 'text/html',
+     mimeType: 'text/plain',
      auth: auth
    }, function(err, content){
      if(err){

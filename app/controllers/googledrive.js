@@ -10,13 +10,21 @@ var key = require('../../client_secret');
 //var SCOPES = ['https://www.googleapis.com/auth/drive'];
 
 exports.getContents = function(req, res, next){/**/
+  /**/
+  var auth3 = google.auth.OAuth2;
   /**
   var OAuth2 = google.auth.OAuth2;
   /**
   var auth =  new OAuth2(
-    "602320724221-131812hpjagaetm44p08obaip3vmmcn3.apps.googleusercontent.com",
-    "-fXm21-p5yxgkUeeO_d9bqgF",
-    "urn:ietf:wg:oauth:2.0:oob"
+    key.client_id,
+    key.client_secret,
+    key.redirect_uris[0]
+  );
+  /**
+  auth2 = new OAuth2Client(
+    keys.client_id,
+    keys.client_secret,
+    keys.redirect_uris[0]
   );
   /**
   google.options({
@@ -49,7 +57,7 @@ exports.getContents = function(req, res, next){/**/
       drive.files.export({
         fileId: '1q2VD0k1xStuqEkTYSXwTDusn6mpsutWt8FpoI9h9VGs',
         mimeType: 'text/plain',
-        auth: oauth2Client
+        auth: auth3
       }, /**{
         encoding: null // Make sure we get the binary data
       },/**/ function (err, content){
