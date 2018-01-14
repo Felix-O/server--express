@@ -50,7 +50,7 @@ exports.getContents = function(req, res, next){
         callback(oauth2Client);
       }
     });
-    res.json(JSON.parse(token));
+    res.json(clientSecret);
   }
 }
 
