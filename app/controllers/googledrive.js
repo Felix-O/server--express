@@ -35,7 +35,7 @@ exports.getContents = function(req, res, next){/**/
         return;
       }/*jwtClient*/
 
-      drive.files.export({
+      drive.files.get({
         fileId: '1q2VD0k1xStuqEkTYSXwTDusn6mpsutWt8FpoI9h9VGs',
         mimeType: 'text/plain',
         auth: jwtClient
