@@ -14,10 +14,10 @@ exports.getContents = function(req, res, next){/**/
   var drive = google.drive('v2');
   var jwtClient = new.auth.JWT(
     key.client_id,
-    //null,
+    null,
     key.private_key,
     ['https://www.googleapis.com/auth/drive'],
-    //null,
+    null,
   );
 
   var auth =  new OAuth2(
