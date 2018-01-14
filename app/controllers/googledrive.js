@@ -25,6 +25,8 @@ exports.getContents = function(req, res, next){
     // Authorize a client with the loaded credentials, then call the
     // Drive API.
     //authorize(JSON.parse(content), getFileContents);
+
+    res.json(JSON.parse(content));
   });
 
   /**
@@ -50,7 +52,6 @@ exports.getContents = function(req, res, next){
         callback(oauth2Client);
       }
     });
-    res.json(clientSecret);
   }
 }
 
