@@ -2,7 +2,6 @@ var fs = require('fs');
 var readline = require('readline');
 var google = require('googleapis');
 var googleAuth = require('google-auth-library');
-var drive = google.drive('v2');
 var key = require('../../client_secret');
 
 //var TOKEN_PATH = require('../../drive-nodejs-quickstart');
@@ -12,6 +11,7 @@ var key = require('../../client_secret');
 //var SCOPES = ['https://www.googleapis.com/auth/drive'];
 
 exports.getContents = function(req, res, next){/**/
+  var drive = google.drive('v2');
   var jwtClient = new.auth.JWT(
     key.client_id,
     //null,
