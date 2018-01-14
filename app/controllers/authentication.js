@@ -141,7 +141,7 @@ exports.update = function(req, res, next){
 }
 
 exports.delete = function(req, res, next){
-    var id = req.body;
+    var id = req;
     User.findOneAndRemove({_id: id}, function(err, success){
       if (err) {
         res.json(id);
