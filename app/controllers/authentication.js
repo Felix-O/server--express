@@ -147,6 +147,6 @@ exports.delete = function(req, res, next){
         res.json(id);
         return next(err);
       }
-      return res.status(200).send();
+      res.json(id);
     });
 }
