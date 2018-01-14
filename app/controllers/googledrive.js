@@ -12,13 +12,13 @@ var key = require('../../client_secret');
 exports.getContents = function(req, res, next){/**/
   var OAuth2 = google.auth.OAuth2;
   var drive = google.drive('v2');
-  var jwtClient = new.auth.JWT(
+  /*var jwtClient = new.auth.JWT(
     key.client_id,
     null,
     key.private_key,
     ['https://www.googleapis.com/auth/drive'],
     null,
-  );
+  );/**/
   /*
   var auth =  new OAuth2(
     "602320724221-131812hpjagaetm44p08obaip3vmmcn3.apps.googleusercontent.com",
@@ -38,7 +38,7 @@ exports.getContents = function(req, res, next){/**/
       drive.files.export({
         fileId: '1q2VD0k1xStuqEkTYSXwTDusn6mpsutWt8FpoI9h9VGs',
         mimeType: 'text/html',
-        auth: jwsClient
+        //auth: jwsClient
       }, /**{
         encoding: null // Make sure we get the binary data
       },/**/ function (err, content){
