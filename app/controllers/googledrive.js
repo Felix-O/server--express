@@ -17,7 +17,7 @@ exports.getContents = function(req, res, next){
   // Load client secrets from a local file.
   //res.json(TOKEN_PATH);
   // Load client secrets from a local file.
-  fs.readFile('client_secret.json', function processClientSecrets(err, content) {
+  fs.readFile('drive-nodejs-quickstart.json', function processClientSecrets(err, content) {
     if (err) {
       res.json('Error loading client secret file: ' + err);
       return;
@@ -26,7 +26,7 @@ exports.getContents = function(req, res, next){
     // Drive API.
     //authorize(JSON.parse(content), getFileContents);
 
-    res.json(fs.readFile('drive-nodejs-quickstart.json'));
+    res.json(JSON.parse(content));
   });
 
   /**
