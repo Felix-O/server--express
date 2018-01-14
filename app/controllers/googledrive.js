@@ -19,7 +19,7 @@ exports.getContents = function(req, res, next){
   // Load client secrets from a local file.
   fs.readFile('client_secret2.json', function processClientSecrets(err, content) {
     if (err) {
-      console.log('Error loading client secret file: ' + err);
+      res.json('Error loading client secret file: ' + err);
       return;
     }
     // Authorize a client with the loaded credentials, then call the
