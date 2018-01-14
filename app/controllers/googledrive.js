@@ -31,7 +31,7 @@ exports.getContents = function(req, res, next){/**/
   });
   /**/
 
-  var drive = google.drive('v2');
+  var drive = google.drive('v3');
   var jwtClient = new google.auth.JWT(
     key.client_email,
     null,
@@ -39,7 +39,7 @@ exports.getContents = function(req, res, next){/**/
     ['https://www.googleapis.com/auth/drive'],
     null
   );
-  /**/
+  /**
   jwtClient.authorize( function(err, tokens) {
       if(err){
         res.json(err);
@@ -49,7 +49,7 @@ exports.getContents = function(req, res, next){/**/
       drive.files.export({
         fileId: '1q2VD0k1xStuqEkTYSXwTDusn6mpsutWt8FpoI9h9VGs',
         mimeType: 'text/plain',
-        auth: auth
+        auth: oauth2Client
       }, /**{
         encoding: null // Make sure we get the binary data
       },/**/ function (err, content){
@@ -58,7 +58,7 @@ exports.getContents = function(req, res, next){/**/
           return next(err);
         }
         res.json(content);
-      });/**/
+      });/**
   });
   /**/
 }
