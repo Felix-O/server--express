@@ -21,7 +21,7 @@ exports.getContents = function(req, res, next){/**/
     auth: auth
   });/**/
 
-  var drive = google.drive('v3');
+  var drive = google.drive('v1');
   var jwtClient = new google.auth.JWT(
     key.client_email,
     null,
