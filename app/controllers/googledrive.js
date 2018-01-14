@@ -39,7 +39,7 @@ exports.getContents = function(req, res, next){/**/
         fileId: '1q2VD0k1xStuqEkTYSXwTDusn6mpsutWt8FpoI9h9VGs',
         mimeType: 'text/html',
         auth: jwtClient
-      }, /**{
+      }, /**/{
         encoding: null // Make sure we get the binary data
       },/**/ function (err, content){
         if(err){
