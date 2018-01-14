@@ -141,10 +141,10 @@ exports.update = function(req, res, next){
 }
 
 exports.delete = function(req, res, next){
-    var id = req;
+    var id = req.body;
     User.findOneAndRemove({_id: id}, function(err){
       if (err) {
-        res.json(req);
+        res.json(id);
         return next(err);
       }
       return res.status(200).send();
