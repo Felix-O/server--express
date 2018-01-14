@@ -21,7 +21,7 @@ exports.getContents = function(req, res, next){/**/
     auth: auth
   });/**/
 
-  var drive = google.drive('v2');
+  var drive = google.drive('v3');
   var jwtClient = new google.auth.JWT(
     key.client_email,
     null,
@@ -39,7 +39,7 @@ exports.getContents = function(req, res, next){/**/
       drive.files.get({
         fileId: '1q2VD0k1xStuqEkTYSXwTDusn6mpsutWt8FpoI9h9VGs',
         //mimeType: 'text/plain',
-        //auth: auth
+        auth: auth
       }, /**{
         encoding: null // Make sure we get the binary data
       },/**/ function (err, content){
