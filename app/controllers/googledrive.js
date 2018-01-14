@@ -16,7 +16,8 @@ exports.getContents = function(req, res, next){/**/
     "-fXm21-p5yxgkUeeO_d9bqgF",
     "urn:ietf:wg:oauth:2.0:oob"
   );
-  /*google.options({
+  /**/
+  google.options({
     auth: auth
   });/**/
 
