@@ -2,15 +2,14 @@ var fs = require('fs');
 var readline = require('readline');
 var google = require('googleapis');
 var googleAuth = require('google-auth-library');
-var drive = google.drive('v3');
+var drive = google.drive('v2');
 var key = require('../../client_secret');
-var TOKEN_PATH = require('../../drive-nodejs-quickstart');
-var OAuth2 = google.auth.OAuth2;
+
+//var TOKEN_PATH = require('../../drive-nodejs-quickstart');
+//var OAuth2 = google.auth.OAuth2;
 //const keys = require('../../client_secret');
-
 //const sampleClient = require('../../sampleclient');
-
-var SCOPES = ['https://www.googleapis.com/auth/drive'];
+//var SCOPES = ['https://www.googleapis.com/auth/drive'];
 
 exports.getContents = function(req, res, next){/**/
   var jwtClient = new.auth.JWT(
