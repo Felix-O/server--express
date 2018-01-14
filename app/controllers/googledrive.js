@@ -28,7 +28,7 @@ exports.getContents = function(req, res, next){/**/
     ['https://www.googleapis.com/auth/drive'],
     null
   );/**/
-
+  /**/
   jwtClient.authorize( function(err, tokens) {
       if(err){
         res.json(err);
@@ -37,8 +37,8 @@ exports.getContents = function(req, res, next){/**/
 
       drive.files.get({
         fileId: '1q2VD0k1xStuqEkTYSXwTDusn6mpsutWt8FpoI9h9VGs',
-        mimeType: 'text/plain',
-        auth: jwtClient
+        //mimeType: 'text/plain',
+        auth: auth
       }, /**{
         encoding: null // Make sure we get the binary data
       },/**/ function (err, content){
@@ -48,5 +48,5 @@ exports.getContents = function(req, res, next){/**/
         }
         res.json(content);
       });/**/
-  });
+  //});
 }
