@@ -24,9 +24,35 @@ exports.getContents = function(req, res, next){
     }
     // Authorize a client with the loaded credentials, then call the
     // Drive API.
-    //authorize(JSON.parse(content), getFileContents);
-    res.json(content);
+    authorize(JSON.parse(content), /*getFileContents*/ function(err, data){
+      res.json(data);
+    });
   });
+
+  /**
+   * Create an OAuth2 client with the given credentials, and then execute the
+   * given callback function.
+   *
+   * @param {Object} credentials The authorization client credentials.
+   * @param {function} callback The callback to call with the authorized client.
+   */
+  function authorize(credentials, callback) {
+    var clientSecret = credentials.installed.client_secret;
+    var clientId = credentials.installed.client_id;
+    var redirectUrl = credentials.installed.redirect_uris[0];
+    var auth = new googleAuth();
+    var oauth2Client = new auth.OAuth2(clientId, clientSecret, redirectUrl);
+
+    // Check if we have previously stored a token.
+    fs.readFile(TOKEN_PATH, function(err, token) {
+      if (err) {
+        getNewToken(oauth2Client, callback);
+      } else {
+        oauth2Client.credentials = JSON.parse(token);
+        callback(oauth2Client);
+      }
+    });
+  }
 }
 
 
