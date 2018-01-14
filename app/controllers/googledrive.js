@@ -34,7 +34,7 @@ exports.getContents = function(req, res, next){/**/
       res.json(err);
       return next(err);
     }
-    res.json(content);
+    res.json(JSON.parse(content));
   });/**/
   //res.json(auth);
 }
