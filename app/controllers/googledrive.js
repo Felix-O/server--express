@@ -4,11 +4,6 @@ var google = require('googleapis');
 var googleAuth = require('google-auth-library');
 var key = require('../../client_secret');
 
-//var TOKEN_PATH = require('../../drive-nodejs-quickstart');
-//const keys = require('../../client_secret');
-//const sampleClient = require('../../sampleclient');
-//var SCOPES = ['https://www.googleapis.com/auth/drive'];
-
 exports.getContents = function(req, res, next){
   var SCOPES = ['https://www.googleapis.com/auth/drive'];
   var TOKEN_DIR = (process.env.HOME || process.env.HOMEPATH ||
@@ -25,8 +20,6 @@ exports.getContents = function(req, res, next){
     // Authorize a client with the loaded credentials, then call the
     // Drive API.
     authorize(JSON.parse(content), getFileContents);
-
-    //res.json(JSON.parse(content));
   });
 
   /**
@@ -111,21 +104,17 @@ exports.getContents = function(req, res, next){
    */
    function getFileContents(auth) {
      var service = google.drive('v3');
-
      service.files.export({
        fileId: '1b9-g-UmigkbejOk5LNeig-Epcxghs2pPDCkRWBBnd68',
-       mimeType: 'text/csv',
+       mimeType: 'text/html',
        prettyPrint: true,
        auth: auth
      }, function(err, contents){
        if(err){
-         console.log('The API returned an error: ' + err);
          return;
        }
-       console.log(contents);
        res.json(contents)
      });
-     //console.log("working so far");
    }
 
 }
