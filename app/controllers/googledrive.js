@@ -114,7 +114,8 @@ exports.getContents = function(req, res, next){
 
      service.files.export({
        fileId: '1b9-g-UmigkbejOk5LNeig-Epcxghs2pPDCkRWBBnd68',
-       mimeType: 'text/plain',
+       mimeType: 'text/html',
+       prettyPrint: true,
        auth: auth
      }, function(err, contents){
        if(err){
