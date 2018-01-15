@@ -116,7 +116,9 @@ exports.getContents = function(req, res, next){
        fileId: '1b9-g-UmigkbejOk5LNeig-Epcxghs2pPDCkRWBBnd68',
        mimeType: 'text/html',
        auth: auth
-     }, function(err, contents){
+     },{
+       encoding: null
+     } , function(err, contents){
        if(err){
          console.log('The API returned an error: ' + err);
          return;
