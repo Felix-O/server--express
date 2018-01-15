@@ -109,8 +109,6 @@ exports.getContents = function(req, res, next){
        mimeType: 'text/plain',
        prettyPrint: true,
        auth: auth
-     }, {
-       encoding: null
      }, function(err, contents){
        if(err){
          return;
