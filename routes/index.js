@@ -25,7 +25,7 @@ router.get('/', function(req, res, next) {
 /**/
   router.post('/api/auth/register', AuthenticationController.register);
   router.post('/api/auth/login', requireLogin, AuthenticationController.login);
-  //router.post('/api/auth/googlelogin', googleAuthLogin, AuthenticationController.login);
+  router.post('/api/auth/googlelogin', googleAuthLogin, AuthenticationController.login);
 
   router.get('/api/auth/protected', requireAuth, function(req, res){
       res.send({ content: 'Success'});
