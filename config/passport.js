@@ -89,7 +89,7 @@ function(accessToken, refreshToken, profile, done){
               })
             }
         });
-    });
+    })
 });
 /**/
 
