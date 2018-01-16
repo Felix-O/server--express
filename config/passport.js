@@ -59,7 +59,7 @@ var jwtLogin = new JwtStrategy(jwtOptions, function(payload, done){
 });
 
 
-/**
+/**/
 var googleLogin = new googleStrategy({
   clientID: config.googleAuth.clientID,
   clientSecret config.googleAuth.clientSecret,
@@ -95,4 +95,4 @@ var googleLogin = new googleStrategy({
 
 passport.use(jwtLogin);
 passport.use(localLogin);
-//passport.use(googleLogin);
+passport.use(googleLogin);
