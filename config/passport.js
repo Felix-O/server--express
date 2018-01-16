@@ -4,7 +4,7 @@ var config = require('./auth');
 var JwtStrategy = require('passport-jwt').Strategy;
 var ExtractJwt = require('passport-jwt').ExtractJwt;
 var LocalStrategy = require('passport-local').Strategy;
-//var googleStrategy = require('passport-google-oauth').OAuth2Strategy;
+var googleStrategy = require('passport-google-oauth').OAuth2Strategy;
 //var facebookStrategy = require('passport-facebook').Strategy;
 
 
