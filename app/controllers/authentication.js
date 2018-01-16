@@ -26,9 +26,7 @@ function setUserInfo(request){
 
 
 exports.login = function(req, res, next){
-
     var userInfo = setUserInfo(req.user);
-
     res.status(200).json({
         token: 'JWT ' + generateToken(userInfo),
         user: userInfo
@@ -38,37 +36,29 @@ exports.login = function(req, res, next){
 
 
 exports.register = function(req, res, next){
-
     var firstname = req.body.firstname;
     var lastname = req.body.lastname;
     var username = req.body.username;
     var email = req.body.email;
     var password = req.body.password;
     var role = req.body.role;
-
     if(!email){
         return res.status(422).send({error: 'You must enter an email address'});
     }
-
     if(!password){
         return res.status(422).send({error: 'You must enter a password'});
     }
-
     User.findOne({email: email}, function(err, existingUser){
-
         if(err){
             return next(err);
         }
-
         if(existingUser){
             return res.status(422).send({error: 'That email address is already in use'});
         }
-
         /*
         if(existingUser.username == username){
             return res.status(422).send({error: 'That username is already in use'});
         }/**/
-
         var user = new User({
             firstname: firstname,
             lastname: lastname,
@@ -77,15 +67,11 @@ exports.register = function(req, res, next){
             password: password,
             role: role
         });
-
         user.save(function(err, user){
-
             if(err){
                 return next(err);
             }
-
             var userInfo = setUserInfo(user);
-
             res.status(201).json({
                 token: 'JWT ' + generateToken(userInfo),
                 user: userInfo
@@ -97,13 +83,9 @@ exports.register = function(req, res, next){
 
 
 exports.roleAuthorization = function(roles){
-
     return function(req, res, next){
-
         var user = req.user;
-
         User.findById(user._id, function(err, foundUser){
-
             if(err){
                 res.status(422).json({error: 'No user found.'});
                 return next(err);
@@ -118,7 +100,6 @@ exports.roleAuthorization = function(roles){
 }
 
 exports.update = function(req, res, next){
-
     var userUpdates = {
       _id: req.body._id,
       firstname: req.body.firstname,
