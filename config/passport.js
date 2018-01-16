@@ -63,33 +63,33 @@ var jwtLogin = new JwtStrategy(jwtOptions, function(payload, done){
 var googleLogin = new googleStrategy({
   clientID: config.googleAuth.clientID,
   clientSecret: config.googleAuth.clientSecret,
-  //callbackURL: config.googleAuth.callbackURL
+  callbackURL: config.googleAuth.callbackURL
 },
-  function(accessToken, refreshToken, profile, done){
+function(accessToken, refreshToken, profile, done){
     process.nextTick(function(){
-      User.findOne({'email': profile.email}, function(err, user){
-        if(err){
-          return done(err);
-        }
-        if(user){
-          return done(null, user);
-        }
-        else {
-          var newUser = new User();
-          newUser.googleID = profile.id;
-          newUser.googleToken = accessToken;
-          newUser.googleName = profile.displayName;
-          newUser.email = profile.emails[0].value;
-          newUser.save(function(err){
+        User.findOne({'email': profile.email}, function(err, user){
             if(err){
-              throw err;
+              return done(err);
             }
-            return done(null, newUser);
-          })
-        }
-      });
+            if(user){
+              return done(null, user);
+            }
+            else
+            {
+              var newUser = new User();
+              newUser.googleID = profile.id;
+              newUser.googleToken = accessToken;
+              newUser.googleName = profile.displayName;
+              newUser.email = profile.emails[0].value;
+              newUser.save(function(err){
+                if(err){
+                  throw err;
+                }
+                return done(null, newUser);
+              })
+            }
+        });
     });
-  }
 });
 /**/
 
