@@ -29,6 +29,15 @@ var UserSchema = new mongoose.Schema({
         type: String,
         enum: ['prospect', 'employer', 'admin'],
         default: 'prospect'
+    },
+    googleID: {
+      type: String
+    }
+    googleName: {
+      type: String
+    },
+    googleToken: {
+      type: String
     }
   }, {
     timestamps: true

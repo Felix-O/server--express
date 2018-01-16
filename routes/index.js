@@ -13,6 +13,8 @@ var quickStart = require('./quickstart');
 var requireAuth = passport.authenticate('jwt', {session: false}),
   requireLogin = passport.authenticate('local', {session: false});
 
+//var googleAuthLogin = passport.authenticate('google', {session: false});
+
 var uriTestDb = "mongodb://Felix-O:bustmup@cluster0-shard-00-00-3xrpm.mongodb.net:27017,cluster0-shard-00-01-3xrpm.mongodb.net:27017,cluster0-shard-00-02-3xrpm.mongodb.net:27017/data_db?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin";
 
 /* GET home page. */
@@ -20,14 +22,10 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'API Server' });
 });
 
-/**
-router.get('/test', AuthenticationController.test);
-router.get('/test2', passportService.test2);
-/**/
-
 /**/
   router.post('/api/auth/register', AuthenticationController.register);
   router.post('/api/auth/login', requireLogin, AuthenticationController.login);
+  //router.post('/api/auth/googlelogin', googleAuthLogin, AuthenticationController.login);
 
   router.get('/api/auth/protected', requireAuth, function(req, res){
       res.send({ content: 'Success'});
