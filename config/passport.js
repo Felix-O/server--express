@@ -85,11 +85,11 @@ var googleLogin = new googleStrategy({
               throw err;
             }
             return done(null, newUser);
-          })
+          });
         }
       })
     });
-  })
+  }
 });
 /**/
 
