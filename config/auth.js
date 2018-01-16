@@ -3,7 +3,7 @@ module.exports = {
   'googleAuth': {
     'clientID': '602320724221-rporhtu0bkte7djssmbhi48qqcvgtdal.apps.googleusercontent.com',
     'clientSecret': 'jtbdsEjFZT4_rUC_Rz1w2OIs',
-    'callbackURL': ''
+    'callbackURL': 'http://fo-server--express.herokuapp.com/'
   },
   'facebookAuth': {
     'clientID': '',

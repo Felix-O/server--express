@@ -62,7 +62,7 @@ var jwtLogin = new JwtStrategy(jwtOptions, function(payload, done){
 /**/
 var googleLogin = new googleStrategy({
   clientID: config.googleAuth.clientID,
-  clientSecret config.googleAuth.clientSecret,
+  clientSecret: config.googleAuth.clientSecret,
   callbackURL: config.googleAuth.callbackURL
 },
   function(accessToken, refreshToken, profile, done){
