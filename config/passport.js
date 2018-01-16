@@ -89,7 +89,7 @@ var googleLogin = new googleStrategy({
         }
       })
     });
-  }
+  })
 });
 /**/
 
