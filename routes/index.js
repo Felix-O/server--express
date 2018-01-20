@@ -36,6 +36,7 @@ router.get('/', function(req, res, next) {
   router.get('/api/index/users', IndexController.users);
   router.post('/api/index/user', IndexController.user);
   router.get('/api/googledrive/filecontents', GoogleDriveController.getContents);
+  router.post('/api/auth/test', requireLogin, AuthenticationController.test);
 /**/
 
 router.get('/getData', function(req, res, next) {

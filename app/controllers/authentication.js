@@ -25,6 +25,12 @@ function setUserInfo(request){
 
 
 
+exports.test = function(req, res, next){
+  res.send(req);
+}
+
+
+
 exports.login = function(req, res, next){
     var userInfo = setUserInfo(req.user);
     res.status(200).json({
