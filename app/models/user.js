@@ -33,10 +33,7 @@ var UserSchema = new mongoose.Schema({
     googleID: {
       type: String
     },
-    googleName: {
-      type: String
-    },
-    googleToken: {
+    googleProfilePic: {
       type: String
     }
   }, {
