@@ -26,7 +26,7 @@ function setUserInfo(request){
 
 
 exports.test = function(req, res, next){
-  res.send(req);
+  res.json(req);
 }
 
 
