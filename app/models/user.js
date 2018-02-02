@@ -27,8 +27,8 @@ var UserSchema = new mongoose.Schema({
     },
     role: {
         type: String,
-        enum: ['prospect', 'employer', 'admin'],
-        default: 'prospect'
+        enum: ['member', 'admin'],
+        default: 'member'
     },
     googleID: {
       type: String
